@@ -13,6 +13,7 @@
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="/opt/homebrew/Cellar/php/8.1.13/share/php/pear" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
