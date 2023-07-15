@@ -8,6 +8,8 @@ use Neetqw\Patterns\Builder\InfoNotificationBuilder;
 use Neetqw\Patterns\Composite\Ingredient;
 use Neetqw\Patterns\Composite\Order;
 use Neetqw\Patterns\Composite\Product;
+use Neetqw\Patterns\Decorator\ReversTestFormatter;
+use Neetqw\Patterns\Decorator\TextInput;
 use Neetqw\Patterns\Singleton\Config;
 
 require_once 'vendor/autoload.php';
@@ -51,3 +53,11 @@ $product->setChild($ingredient2);
 $order->setChild($product);
 
 echo $order->getPrice();
+
+// Decorator
+$textInput = new TextInput();
+$defaultText = $textInput->textFormat('какой то текст');
+echo $defaultText;
+
+$reversedText = new ReversTestFormatter($textInput);
+echo $reversedText->textFormat($defaultText);
