@@ -5,6 +5,9 @@ use Neetqw\Patterns\Adapter\JsonData;
 use Neetqw\Patterns\Adapter\XmlData;
 use Neetqw\Patterns\Adapter\XmlReader;
 use Neetqw\Patterns\Builder\InfoNotificationBuilder;
+use Neetqw\Patterns\Composite\Ingredient;
+use Neetqw\Patterns\Composite\Order;
+use Neetqw\Patterns\Composite\Product;
 use Neetqw\Patterns\Singleton\Config;
 
 require_once 'vendor/autoload.php';
@@ -31,8 +34,20 @@ $config2 = Config::getInstance();
 
 // адаптер
 $jsonData = new JsonData();
-echo $jsonData->read();
+//echo $jsonData->read();
 
 $xmlReader = new XmlReader();
 $xmlData = new XmlData($xmlReader);
-echo $xmlData->read();
+//echo $xmlData->read();
+
+// Composite
+$order = new Order();
+$product = new Product();
+$ingredient = new Ingredient();
+$ingredient2 = new Ingredient();
+
+$product->setChild($ingredient);
+$product->setChild($ingredient2);
+$order->setChild($product);
+
+echo $order->getPrice();
